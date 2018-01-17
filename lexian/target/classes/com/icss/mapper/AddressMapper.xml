@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icss.dao.AddressMapper" >
+  <resultMap id="BaseResultMap" type="com.icss.model.Address" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cus_id" property="cusId" jdbcType="INTEGER" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="street" property="street" jdbcType="VARCHAR" />
+    <result column="con_name" property="conName" jdbcType="VARCHAR" />
+    <result column="con_phone" property="conPhone" jdbcType="VARCHAR" />
+    <result column="bak" property="bak" jdbcType="VARCHAR" />
+    <result column="ordernum" property="ordernum" jdbcType="INTEGER" />
+    <result column="isdefault" property="isdefault" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cus_id, province, city, area, street, con_name, con_phone, bak, ordernum, isdefault
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_address
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_address
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.icss.model.Address" >
+    insert into t_address (id, cus_id, province, 
+      city, area, street, 
+      con_name, con_phone, bak, 
+      ordernum, isdefault)
+    values (#{id,jdbcType=INTEGER}, #{cusId,jdbcType=INTEGER}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{street,jdbcType=VARCHAR}, 
+      #{conName,jdbcType=VARCHAR}, #{conPhone,jdbcType=VARCHAR}, #{bak,jdbcType=VARCHAR}, 
+      #{ordernum,jdbcType=INTEGER}, #{isdefault,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.icss.model.Address" >
+    insert into t_address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cusId != null" >
+        cus_id,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="street != null" >
+        street,
+      </if>
+      <if test="conName != null" >
+        con_name,
+      </if>
+      <if test="conPhone != null" >
+        con_phone,
+      </if>
+      <if test="bak != null" >
+        bak,
+      </if>
+      <if test="ordernum != null" >
+        ordernum,
+      </if>
+      <if test="isdefault != null" >
+        isdefault,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cusId != null" >
+        #{cusId,jdbcType=INTEGER},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="street != null" >
+        #{street,jdbcType=VARCHAR},
+      </if>
+      <if test="conName != null" >
+        #{conName,jdbcType=VARCHAR},
+      </if>
+      <if test="conPhone != null" >
+        #{conPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="bak != null" >
+        #{bak,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernum != null" >
+        #{ordernum,jdbcType=INTEGER},
+      </if>
+      <if test="isdefault != null" >
+        #{isdefault,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.icss.model.Address" >
+    update t_address
+    <set >
+      <if test="cusId != null" >
+        cus_id = #{cusId,jdbcType=INTEGER},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="street != null" >
+        street = #{street,jdbcType=VARCHAR},
+      </if>
+      <if test="conName != null" >
+        con_name = #{conName,jdbcType=VARCHAR},
+      </if>
+      <if test="conPhone != null" >
+        con_phone = #{conPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="bak != null" >
+        bak = #{bak,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernum != null" >
+        ordernum = #{ordernum,jdbcType=INTEGER},
+      </if>
+      <if test="isdefault != null" >
+        isdefault = #{isdefault,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.icss.model.Address" >
+    update t_address
+    set cus_id = #{cusId,jdbcType=INTEGER},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      street = #{street,jdbcType=VARCHAR},
+      con_name = #{conName,jdbcType=VARCHAR},
+      con_phone = #{conPhone,jdbcType=VARCHAR},
+      bak = #{bak,jdbcType=VARCHAR},
+      ordernum = #{ordernum,jdbcType=INTEGER},
+      isdefault = #{isdefault,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

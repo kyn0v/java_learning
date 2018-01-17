@@ -1,0 +1,27 @@
+jsp九大对象
+serverlet生命周期
+javabean
+jdbc
+
+
+
+jsp(页面尽量不要写JAVA代码<%%> 用jstl,el表达式）
+servlet（业务逻辑放在后台处理）
+javabean业务逻辑放在后台处理）
+jdbc（通用工具类，Dbhelper.java）
+前端：js，jquery         ,vue.js,angular.js,react.js
+后端：
+spring+springMVC+(hibernate+mybatis)
+
+springboot,springcloud(分布式，微服务架构)
+redis nosql json
+mysql 关系型数据库
+
+web开发不是网站开发
+管理系统
+财务
+ERP
+CRM
+购物平台
+移动端
+

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icss.dao.AssessmentMapper" >
+  <resultMap id="BaseResultMap" type="com.icss.model.Assessment" >
+    <id column="assessment_id" property="assessmentId" jdbcType="INTEGER" />
+    <result column="pro_id" property="proId" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="ass_level" property="assLevel" jdbcType="INTEGER" />
+    <result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
+    <result column="parent_ass_id" property="parentAssId" jdbcType="INTEGER" />
+    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <result column="ass_time" property="assTime" jdbcType="TIMESTAMP" />
+    <result column="reply_time" property="replyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    assessment_id, pro_id, title, content, ass_level, pic_url, parent_ass_id, customer_id, 
+    ass_time, reply_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_assessment
+    where assessment_id = #{assessmentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_assessment
+    where assessment_id = #{assessmentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.icss.model.Assessment" >
+    insert into t_assessment (assessment_id, pro_id, title, 
+      content, ass_level, pic_url, 
+      parent_ass_id, customer_id, ass_time, 
+      reply_time)
+    values (#{assessmentId,jdbcType=INTEGER}, #{proId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{assLevel,jdbcType=INTEGER}, #{picUrl,jdbcType=VARCHAR}, 
+      #{parentAssId,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{assTime,jdbcType=TIMESTAMP}, 
+      #{replyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.icss.model.Assessment" >
+    insert into t_assessment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="assessmentId != null" >
+        assessment_id,
+      </if>
+      <if test="proId != null" >
+        pro_id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="assLevel != null" >
+        ass_level,
+      </if>
+      <if test="picUrl != null" >
+        pic_url,
+      </if>
+      <if test="parentAssId != null" >
+        parent_ass_id,
+      </if>
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="assTime != null" >
+        ass_time,
+      </if>
+      <if test="replyTime != null" >
+        reply_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="assessmentId != null" >
+        #{assessmentId,jdbcType=INTEGER},
+      </if>
+      <if test="proId != null" >
+        #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="assLevel != null" >
+        #{assLevel,jdbcType=INTEGER},
+      </if>
+      <if test="picUrl != null" >
+        #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentAssId != null" >
+        #{parentAssId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="assTime != null" >
+        #{assTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyTime != null" >
+        #{replyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.icss.model.Assessment" >
+    update t_assessment
+    <set >
+      <if test="proId != null" >
+        pro_id = #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="assLevel != null" >
+        ass_level = #{assLevel,jdbcType=INTEGER},
+      </if>
+      <if test="picUrl != null" >
+        pic_url = #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentAssId != null" >
+        parent_ass_id = #{parentAssId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="assTime != null" >
+        ass_time = #{assTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyTime != null" >
+        reply_time = #{replyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where assessment_id = #{assessmentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.icss.model.Assessment" >
+    update t_assessment
+    set pro_id = #{proId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      ass_level = #{assLevel,jdbcType=INTEGER},
+      pic_url = #{picUrl,jdbcType=VARCHAR},
+      parent_ass_id = #{parentAssId,jdbcType=INTEGER},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      ass_time = #{assTime,jdbcType=TIMESTAMP},
+      reply_time = #{replyTime,jdbcType=TIMESTAMP}
+    where assessment_id = #{assessmentId,jdbcType=INTEGER}
+  </update>
+</mapper>
